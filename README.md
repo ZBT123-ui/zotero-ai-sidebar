@@ -1,5 +1,7 @@
 # Zotero AI Sidebar
 
+[English](README.en.md) · 中文
+
 一个面向 Zotero 10.x 的免费 AI 文献阅读侧栏。它使用你自己的 OpenAI Chat Completions 兼容 API，不绑定会员服务。
 
 [下载 0.2.3 安装包](https://github.com/ZBT123-ui/zotero-ai-sidebar/releases/download/v0.2.3/zotero-ai-sidebar-0.2.3.xpi) · [所有版本](https://github.com/ZBT123-ui/zotero-ai-sidebar/releases) · [反馈问题](https://github.com/ZBT123-ui/zotero-ai-sidebar/issues)
