@@ -19,3 +19,18 @@ work
 *.xpi
 *.zip
 release-assets/
+
+# Personal configuration, credentials, and chat records
+.env.*
+!.env.example
+.npmrc
+.credentials*
+credentials.json
+api-keys.json
+secrets*.json
+*.pem
+*.key
+zotero-ai-sidebar-chats*.json*
+*.log
+*.bak
+*.tmp
