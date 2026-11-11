@@ -1,0 +1,64 @@
+{
+  "name": "zotero-ai-sidebar",
+  "type": "module",
+  "version": "0.2.3",
+  "description": "A free cloud AI chat sidebar for Zotero PDFs",
+  "config": {
+    "addonName": "Zotero AI Sidebar",
+    "addonID": "zotero-ai-sidebar@local",
+    "addonRef": "zoteroAISidebar",
+    "addonInstance": "ZoteroAISidebar",
+    "prefsPrefix": "extensions.zotero.zoteroAISidebar"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZBT123-ui/zotero-ai-sidebar.git"
+  },
+  "author": "ZBT123-ui",
+  "homepage": "https://github.com/ZBT123-ui/zotero-ai-sidebar",
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "start": "zotero-plugin serve",
+    "build": "zotero-plugin build && tsc --noEmit",
+    "lint:check": "prettier --check . && eslint .",
+    "lint:fix": "prettier --write . && eslint . --fix",
+    "release": "zotero-plugin release",
+    "package:release": "node scripts/prepare-release.mjs",
+    "test": "zotero-plugin test",
+    "test:storage": "powershell -NoProfile -ExecutionPolicy Bypass -File test/storage-runner.ps1",
+    "test:storage:node": "node test/storage-node.mjs",
+    "update-deps": "npm update --save"
+  },
+  "dependencies": {
+    "katex": "^0.16.22",
+    "zotero-plugin-toolkit": "^5.1.0-beta.13"
+  },
+  "devDependencies": {
+    "@types/chai": "^5.2.3",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.10.0",
+    "@zotero-plugin/eslint-config": "^0.6.7",
+    "chai": "^6.2.1",
+    "eslint": "^9.39.2",
+    "mocha": "^11.7.5",
+    "prettier": "^3.7.4",
+    "typescript": "^5.9.3",
+    "zotero-plugin-scaffold": "^0.8.2",
+    "zotero-types": "^4.1.0-beta.4"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 2,
+    "endOfLine": "lf",
+    "overrides": [
+      {
+        "files": [
+          "*.xhtml"
+        ],
+        "options": {
+          "htmlWhitespaceSensitivity": "css"
+        }
+      }
+    ]
+  }
+}

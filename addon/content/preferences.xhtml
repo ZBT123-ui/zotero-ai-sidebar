@@ -1,0 +1,25 @@
+<linkset>
+  <html:link rel="localization" href="__addonRef__-preferences.ftl" />
+</linkset>
+<groupbox>
+  <label><html:h2 data-l10n-id="pref-title"></html:h2></label>
+  <description data-l10n-id="pref-help"></description>
+  <hbox
+    ><html:label value="API endpoint" /><html:input
+      preference="endpoint"
+      type="text"
+      flex="1"
+  /></hbox>
+  <hbox
+    ><html:label value="Model" /><html:input
+      preference="model"
+      type="text"
+      flex="1"
+  /></hbox>
+  <hbox
+    ><html:label value="API key" /><html:input
+      preference="apiKey"
+      type="password"
+      flex="1"
+  /></hbox>
+</groupbox>

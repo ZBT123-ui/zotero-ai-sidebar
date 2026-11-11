@@ -1,0 +1,657 @@
+.zai-root {
+  --zai-bg: #ffffff;
+  --zai-surface: #f6f6f4;
+  --zai-hover: #ededeb;
+  --zai-ink: #252624;
+  --zai-muted: #777a74;
+  --zai-line: #e6e7e2;
+  --zai-accent: #284c3c;
+  --zai-accent-soft: #eaf2ec;
+  --zai-danger: #b44538;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  width: 100%;
+  min-height: 540px;
+  padding: 14px 12px 10px;
+  color: var(--zai-ink);
+  background: var(--zai-bg);
+  font:
+    15px/1.7 -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Microsoft YaHei",
+    sans-serif;
+  color-scheme: light dark;
+}
+.zai-root *,
+.zai-root *::before,
+.zai-root *::after {
+  box-sizing: border-box;
+}
+.zai-root button,
+.zai-root input,
+.zai-root textarea,
+.zai-root select {
+  font: inherit;
+  color: inherit;
+  margin: 0;
+  min-width: 0;
+}
+.zai-root button {
+  appearance: none;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+}
+.zai-root button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.zai-root :is(button, input, textarea, select, summary):focus-visible {
+  outline: 2px solid var(--zai-accent);
+  outline-offset: 2px;
+}
+.zai-header,
+.zai-brand,
+.zai-header-actions,
+.zai-conversation-bar,
+.zai-context-row,
+.zai-composer-actions,
+.zai-message-heading,
+.zai-settings-buttons,
+.zai-chat-tools {
+  display: flex;
+  align-items: center;
+}
+.zai-header {
+  justify-content: space-between;
+  gap: 8px;
+}
+.zai-brand {
+  min-width: 0;
+  gap: 9px;
+}
+.zai-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border-radius: 10px;
+  background: var(--zai-accent-soft);
+  color: var(--zai-accent);
+}
+.zai-brand-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.zai-brand-title {
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: 0.1px;
+}
+.zai-brand-subtitle {
+  color: var(--zai-muted);
+  font-size: 11px;
+  white-space: nowrap;
+}
+.zai-header-actions {
+  gap: 3px;
+  flex-shrink: 0;
+}
+.zai-root .zai-icon-button,
+.zai-root .zai-message-action {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 5px;
+  border-radius: 7px;
+  color: var(--zai-muted);
+  flex-shrink: 0;
+}
+.zai-root .zai-icon-button:hover,
+.zai-root .zai-message-action:hover {
+  background: var(--zai-hover);
+  color: var(--zai-ink);
+}
+.zai-root .zai-danger-button:hover {
+  color: var(--zai-danger);
+}
+.zai-root svg {
+  display: block;
+  flex-shrink: 0;
+}
+.zai-settings {
+  border: 1px solid var(--zai-line);
+  border-radius: 10px;
+  padding: 0 10px;
+}
+.zai-settings-summary {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  padding: 8px 0;
+  color: var(--zai-muted);
+  font-size: 12px;
+  list-style: none;
+}
+.zai-settings-summary::after {
+  content: "+";
+  margin-left: auto;
+  font-size: 15px;
+}
+.zai-settings[open] .zai-settings-summary::after {
+  content: "−";
+}
+.zai-settings-summary::-webkit-details-marker {
+  display: none;
+}
+.zai-settings-grid {
+  display: grid;
+  gap: 10px;
+  padding: 4px 0 10px;
+}
+.zai-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.zai-field-label {
+  color: var(--zai-muted);
+  font-size: 12px;
+}
+.zai-root .zai-field-input {
+  width: 100%;
+  padding: 8px 9px;
+  border: 1px solid var(--zai-line);
+  border-radius: 6px;
+  background: var(--zai-bg);
+  font-size: 14px;
+}
+.zai-field:has(.zai-checkbox) {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.zai-checkbox {
+  accent-color: var(--zai-accent);
+}
+.zai-settings-buttons {
+  gap: 8px;
+}
+.zai-settings-hint {
+  margin: 0;
+  font-size: 12px;
+  color: var(--zai-muted);
+}
+.zai-conversation-bar {
+  padding: 6px 5px 6px 10px;
+  gap: 5px;
+  border-radius: 9px;
+  background: var(--zai-surface);
+}
+.zai-bar-label {
+  font-size: 12px;
+  color: var(--zai-muted);
+  margin-right: 3px;
+  flex-shrink: 0;
+}
+.zai-root .zai-conversation-select {
+  flex: 1;
+  width: 0;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  padding: 2px 0;
+  text-overflow: ellipsis;
+}
+.zai-root .zai-conversation-select option {
+  background: var(--zai-bg);
+  color: var(--zai-ink);
+}
+.zai-chat-tools {
+  gap: 0;
+}
+.zai-conversation-bar .zai-icon-button {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+}
+.zai-context-row {
+  gap: 7px;
+  min-width: 0;
+  border-bottom: 1px solid var(--zai-line);
+  padding-bottom: 9px;
+}
+.zai-context::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: var(--zai-accent);
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: 2px;
+}
+.zai-context {
+  min-width: 0;
+  flex: 1;
+  color: var(--zai-muted);
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.zai-context-row .zai-icon-button {
+  width: 22px;
+  height: 22px;
+}
+.zai-warning:empty,
+.zai-status:empty {
+  display: none;
+}
+.zai-warning {
+  padding: 7px 9px;
+  border: 1px solid var(--zai-line);
+  border-radius: 7px;
+  color: var(--zai-danger);
+  font-size: 12px;
+}
+.zai-transcript {
+  min-height: 250px;
+  height: clamp(270px, calc(100vh - 410px), 760px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--zai-line) transparent;
+  padding: 0 5px 8px;
+}
+.zai-message {
+  min-width: 0;
+  margin: 0 0 20px;
+}
+.zai-message:last-child {
+  margin-bottom: 3px;
+}
+.zai-message-heading {
+  justify-content: space-between;
+  min-height: 25px;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: var(--zai-muted);
+}
+.zai-message-author {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+.zai-assistant .zai-message-author {
+  color: var(--zai-accent);
+}
+.zai-user .zai-message-text {
+  padding: 10px 12px;
+  background: var(--zai-surface);
+  border-radius: 12px 12px 3px 12px;
+  white-space: pre-wrap;
+}
+.zai-message-text {
+  overflow-wrap: anywhere;
+  line-height: 1.82;
+  font-size: 15px;
+}
+.zai-message-text p {
+  margin: 0 0 7px;
+}
+.zai-message-text p:last-child {
+  margin-bottom: 0;
+}
+.zai-message-text :is(h3, h4, h5, h6) {
+  font-size: 16px;
+  margin: 15px 0 7px;
+  line-height: 1.6;
+  font-weight: 650;
+}
+.zai-message-text :is(ul, ol) {
+  padding-left: 21px;
+  margin: 6px 0 10px;
+}
+.zai-message-text li {
+  padding-left: 1px;
+  margin-bottom: 5px;
+}
+.zai-message-text strong {
+  font-weight: 650;
+}
+.zai-message-text a {
+  color: var(--zai-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.zai-message-text blockquote {
+  border-left: 2px solid var(--zai-line);
+  margin: 9px 0;
+  padding: 2px 10px;
+  color: var(--zai-muted);
+}
+.zai-message-text code {
+  font:
+    13px/1.65 "Cascadia Code",
+    Consolas,
+    monospace;
+  border-radius: 4px;
+  padding: 2px 4px;
+  background: var(--zai-surface);
+}
+.zai-code {
+  margin: 10px 0;
+  border: 1px solid var(--zai-line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.zai-code-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  background: var(--zai-surface);
+  font-size: 10px;
+  color: var(--zai-muted);
+}
+.zai-code-bar .zai-icon-button {
+  width: 22px;
+  height: 22px;
+}
+.zai-code pre {
+  margin: 0;
+  padding: 10px;
+  overflow-x: auto;
+  background: var(--zai-bg);
+}
+.zai-code pre code {
+  white-space: pre;
+  padding: 0;
+  background: transparent;
+  overflow-wrap: normal;
+}
+.zai-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 10px 0;
+}
+.zai-message-text table {
+  border-collapse: collapse;
+  min-width: 100%;
+  font-size: 13px;
+}
+.zai-message-text :is(th, td) {
+  border: 1px solid var(--zai-line);
+  padding: 6px 8px;
+  text-align: left;
+  min-width: 60px;
+}
+.zai-message-text th {
+  background: var(--zai-surface);
+}
+.zai-live .zai-message-heading {
+  color: var(--zai-accent);
+}
+.zai-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 32px 8px 20px;
+  text-align: center;
+}
+.zai-welcome-icon {
+  font-size: 32px;
+  line-height: 1.4;
+  color: var(--zai-accent);
+  margin-bottom: 1px;
+}
+.zai-welcome strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+.zai-welcome > span {
+  font-size: 13px;
+  color: var(--zai-muted);
+  max-width: 230px;
+}
+.zai-prompts {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 7px;
+  margin-top: 12px;
+}
+.zai-root .zai-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 44px;
+  border: 1px solid var(--zai-line);
+  border-radius: 8px;
+  padding: 9px 12px;
+  color: var(--zai-ink);
+  background: var(--zai-surface);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: left;
+}
+.zai-root .zai-prompt:hover {
+  border-color: var(--zai-accent);
+  color: var(--zai-accent);
+  background: var(--zai-accent-soft);
+}
+.zai-composer {
+  border: 1px solid var(--zai-line);
+  background: var(--zai-surface);
+  border-radius: 13px;
+  padding: 10px;
+  box-shadow: 0 2px 6px #00000004;
+}
+.zai-composer:focus-within {
+  border-color: var(--zai-accent);
+  box-shadow: 0 0 0 1px var(--zai-accent-soft);
+}
+.zai-root .zai-question {
+  width: 100%;
+  display: block;
+  padding: 0 2px;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  resize: vertical;
+  min-height: 72px;
+  max-height: 220px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.zai-question::placeholder {
+  color: var(--zai-muted);
+  opacity: 0.8;
+}
+.zai-composer-actions {
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 7px;
+}
+.zai-root .zai-ask,
+.zai-root .zai-primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  background: var(--zai-ink);
+  color: var(--zai-bg);
+  border: 1px solid var(--zai-ink);
+  border-radius: 8px;
+  padding: 5px 14px;
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+.zai-root .zai-ask:hover,
+.zai-root .zai-primary-button:hover {
+  opacity: 0.86;
+}
+.zai-root .zai-secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  border: 1px solid var(--zai-line);
+  border-radius: 7px;
+  padding: 5px 9px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--zai-muted);
+  background: var(--zai-bg);
+}
+.zai-root .zai-secondary-button:hover {
+  color: var(--zai-ink);
+  border-color: var(--zai-muted);
+}
+.zai-root .zai-stop-button {
+  color: var(--zai-danger);
+  background: var(--zai-bg);
+  border-color: var(--zai-danger);
+}
+.zai-status {
+  font-size: 12px;
+  color: var(--zai-muted);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.zai-footnote {
+  text-align: center;
+  font-size: 11px;
+  color: var(--zai-muted);
+  margin-top: -5px;
+}
+.zai-root .zai-storage-settings {
+  border-top: 1px solid var(--zai-line);
+  padding-top: 9px;
+  display: grid;
+  gap: 7px;
+}
+.zai-storage-title {
+  font-size: 13px;
+  font-weight: 650;
+}
+.zai-root .zai-storage-path {
+  color: var(--zai-muted);
+  font:
+    12px/1.5 "Cascadia Code",
+    Consolas,
+    monospace;
+  overflow-wrap: anywhere;
+  user-select: text;
+}
+.zai-storage-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.zai-root .zai-storage-buttons .zai-secondary-button {
+  font-size: 12px;
+  padding: 5px 8px;
+  min-height: 30px;
+}
+.zai-root .zai-context-row > .zai-secondary-button {
+  flex-shrink: 0;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+.zai-math,
+.zai-math-display {
+  color: inherit;
+}
+.zai-math-display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 8px 2px;
+  text-align: center;
+}
+.zai-message-text .katex-display {
+  margin: 0.25em 0;
+  text-align: center;
+}
+.zai-message-text .katex {
+  font-size: 1.06em;
+}
+.zai-message-text .katex-display > .katex {
+  white-space: normal;
+}
+.zai-message-text .katex-display .katex-html {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.zai-math-error {
+  color: var(--zai-muted);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.92em;
+}
+.zai-scale-small .zai-message-text {
+  font-size: 14px;
+}
+.zai-scale-small .zai-question {
+  font-size: 14px;
+}
+.zai-scale-small .zai-field-input {
+  font-size: 14px;
+}
+.zai-scale-normal .zai-message-text {
+  font-size: 15px;
+}
+.zai-scale-normal .zai-question {
+  font-size: 15px;
+}
+.zai-scale-normal .zai-field-input {
+  font-size: 15px;
+}
+.zai-scale-large .zai-message-text {
+  font-size: 17px;
+}
+.zai-scale-large .zai-question {
+  font-size: 17px;
+}
+.zai-scale-large .zai-field-input {
+  font-size: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  .zai-root {
+    --zai-bg: #242523;
+    --zai-surface: #2d2e2b;
+    --zai-hover: #383a35;
+    --zai-ink: #e8e9e3;
+    --zai-muted: #a1a49b;
+    --zai-line: #3f423b;
+    --zai-accent: #a6ceb2;
+    --zai-accent-soft: #303f34;
+    --zai-danger: #eda598;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .zai-root button {
+    transition:
+      background-color 0.12s,
+      color 0.12s,
+      border-color 0.12s;
+  }
+}

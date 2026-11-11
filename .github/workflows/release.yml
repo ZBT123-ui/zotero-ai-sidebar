@@ -1,0 +1,50 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Use HTTPS for public Git dependencies
+        run: git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+      - run: npm ci
+      - run: npm run lint:check
+      - run: npm run test:storage:node
+      - run: npm run build
+      - run: npm run package:release
+      - name: Publish release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          version="$(node -p 'JSON.parse(require("node:fs").readFileSync("package.json", "utf8")).version')"
+          tag="v${version}"
+          test "$GITHUB_REF_NAME" = "$tag"
+          if ! gh release view "$tag" > /dev/null 2>&1; then
+            notes="doc/releases/${version}.md"
+            if test -f "$notes"; then
+              gh release create "$tag" --verify-tag --draft --title "Zotero AI Sidebar ${version}" --notes-file "$notes"
+            else
+              gh release create "$tag" --verify-tag --draft --title "Zotero AI Sidebar ${version}" --generate-notes
+            fi
+          fi
+          gh release upload "$tag" release-assets/* --clobber
+          gh release edit "$tag" --draft=false --latest
